@@ -1,0 +1,12 @@
+
+b
+java:S1192"LDefine a constant instead of duplicating this literal "browserName" 3 times.(•ÀÔ›
+N	java:S106#"9Replace this use of System.out or System.err by a logger.(¥›åË
+P	java:S125""<This block of commented-out lines of code should be removed.(¨˜ì
+P	java:S125$"<This block of commented-out lines of code should be removed.(¨˜ì
+M
+java:S18748"7Remove this use of "pageLoadTimeout"; it is deprecated.(‰üÚş
+Q
+java:S18749"6Remove this use of "implicitlyWait"; it is deprecated.(Ø··Ûûÿÿÿÿ
+M
+java:S1135B"2Complete the task associated to this TODO comment.(®·áğÿÿÿÿÿ
