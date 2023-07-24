@@ -60,7 +60,6 @@ public class MerchantOnBoardingSteps {
         merchantOnBoardingPage.registeredAddressAddressLine2.enterValue();
         merchantOnBoardingPage.registeredAddressCityOrTown.enterValue();
         merchantOnBoardingPage.registeredAddressStateCode.enterValue();
-
     }
 
     @Given("User is navigate to {string} page")

@@ -39,16 +39,9 @@ public final class TestScenario {
         driver.quit();
     }
 
-    private File takeScreenShot() {
-        File desFile = new File("./target/" + Utility.getScreenshotFileName());
-        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(file, desFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new FrameworkException("Could not take screenshot : " + e.getMessage());
-        }
-        return desFile;
+    private void takeScreenShot() {
+        final byte[] screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        scenario.attach(screenShot, "image/png", Utility.getScreenshotFileName());
     }
 
     public void cucumberResultLog(String logMessage) {
@@ -56,7 +49,6 @@ public final class TestScenario {
     }
 
     public void attachScreenShotToCucumberResult() {
-        File screenshotFile = takeScreenShot();
-        scenario.attach(screenshotFile.getPath().getBytes(), "DEFAULT", "DEFAULT");
+        takeScreenShot();
     }
 }

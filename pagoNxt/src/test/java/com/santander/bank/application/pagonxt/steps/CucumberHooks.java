@@ -1,13 +1,14 @@
-package com.santander.test.automation.core;
+package com.santander.bank.application.pagonxt.steps;
 
 import com.santander.test.automation.config.TestScenario;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CucumberHooks  {
+public class CucumberHooks {
     private Scenario scenario;
     private final TestScenario testScenario;
     private final Logger logger = LoggerFactory.getLogger(CucumberHooks.class);
@@ -18,6 +19,12 @@ public class CucumberHooks  {
         logger.info("Starting execution for new test, having tags : '{}' ", scenario.getSourceTagNames());
         this.scenario = scenario;
         this.testScenario.setCucumberScenario(scenario);
+    }
+
+    @AfterStep
+    public void afterStep()
+    {
+        this.testScenario.attachScreenShotToCucumberResult();
     }
 
     @After(order = 0)
