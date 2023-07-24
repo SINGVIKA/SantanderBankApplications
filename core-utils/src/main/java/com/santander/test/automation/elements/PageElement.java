@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
 /*
  *  author : Vikas Singh
@@ -247,6 +248,8 @@ public class PageElement {
         Wait<WebDriver> wait = new WebDriverWait(driver, maxTimeOutInSeconds);
         wait.until(ExpectedConditions.elementToBeClickable(this.getObject()));
     }
+
+
 
     public void waitUntilVisible(Duration maxTimeOutInSeconds) {
         Wait<WebDriver> wait = new WebDriverWait(driver, maxTimeOutInSeconds);

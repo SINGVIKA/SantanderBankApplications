@@ -30,10 +30,7 @@ final class DriverUtil {
     private void initialiseDriver() {
         if (TestConfig.getConfig("browserName").equalsIgnoreCase("CHROME")) {
             browserName = BrowserName.CHROME;
-            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/../core-utils/src/main/resources/drivers/"+"chromedriverMac");
-            // WebDriverManager.chromedriver().setup();
-            System.out.println(" chrome.getProperty " +  System.getProperty("webdriver.chrome.driver"));
-           // WebDriverManager.chromedriver().setup();
+            WebDriverManager.chromedriver().setup();
             this.driver = new ChromeDriver();
         } else if (TestConfig.getConfig("browserName").equalsIgnoreCase("FIREFOX")) {
             browserName = BrowserName.FIREFOX;

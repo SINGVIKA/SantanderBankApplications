@@ -10,10 +10,5 @@
         <module name="pagoNxt" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="core-utils" target="16" />
-      <module name="pagoNxt" target="16" />
-      <module name="SantanderBankApplications" target="16" />
-    </bytecodeTargetLevel>
   </component>
 </project>

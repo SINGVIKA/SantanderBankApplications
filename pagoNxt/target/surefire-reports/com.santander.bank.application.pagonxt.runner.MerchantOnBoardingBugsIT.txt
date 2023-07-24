@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.santander.bank.application.pagonxt.runner.MerchantOnBoardingBugsIT
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.099 s - in com.santander.bank.application.pagonxt.runner.MerchantOnBoardingBugsIT
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.101 s - in com.santander.bank.application.pagonxt.runner.MerchantOnBoardingBugsIT
