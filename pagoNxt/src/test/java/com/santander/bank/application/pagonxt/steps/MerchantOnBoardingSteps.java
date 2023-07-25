@@ -5,6 +5,7 @@ import com.santander.test.automation.config.TestScenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 
 import java.net.MalformedURLException;
 
@@ -46,20 +47,51 @@ public class MerchantOnBoardingSteps {
         merchantOnBoardingPage.entityType.click();
         merchantOnBoardingPage.entityTypeValueDropDown.click();
         merchantOnBoardingPage.industryCategory.click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         merchantOnBoardingPage.industryCategoryValue.click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         merchantOnBoardingPage.mccClassification.enterValue();
+        merchantOnBoardingPage.mccClassification.clickIfPresent();
+        //merchantOnBoardingPage.mccClassificationValue.click();
+
+        merchantOnBoardingPage.countryOfIncorporation.enterValue();
+        merchantOnBoardingPage.countryOfIncorporation.click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        merchantOnBoardingPage.countryOfIncorporationValue.clickIfPresent();
+        merchantOnBoardingPage.entityOverview.enterValue();
+        merchantOnBoardingPage.registeredAddressCountry.enterValue();
+        merchantOnBoardingPage.registeredAddressCountry.click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        merchantOnBoardingPage.registeredAddressCountryValue.clickViaJavaScript("Spain", By.xpath("//div[@id='po0' and @data-harness-id='HID13E981A86CCBD0BD93DFABD368473AE6']"));
+
+        merchantOnBoardingPage.registeredAddressAddressLine1.enterValue();
+        merchantOnBoardingPage.registeredAddressAddressLine2.enterValue();
+        merchantOnBoardingPage.registeredAddressCityOrTown.enterValue();
+
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        merchantOnBoardingPage.countryOfIncorporation.enterValue();
-        merchantOnBoardingPage.entityOverview.enterValue();
-        merchantOnBoardingPage.registeredAddressCountry.enterValue();
-        merchantOnBoardingPage.registeredAddressAddressLine1.enterValue();
-        merchantOnBoardingPage.registeredAddressAddressLine2.enterValue();
-        merchantOnBoardingPage.registeredAddressCityOrTown.enterValue();
         merchantOnBoardingPage.registeredAddressStateCode.enterValue();
+        merchantOnBoardingPage.registeredAddresPostalCode.enterValue();
     }
 
     @Given("User is navigate to {string} page")

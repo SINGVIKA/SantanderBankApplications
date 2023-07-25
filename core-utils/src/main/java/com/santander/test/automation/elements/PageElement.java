@@ -3,9 +3,7 @@ package com.santander.test.automation.elements;
 import com.santander.test.automation.types.ElementType;
 import com.santander.test.automation.types.LocatorType;
 import com.santander.test.automation.util.Utility;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -16,7 +14,6 @@ import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.Set;
 
 /*
  *  author : Vikas Singh
@@ -119,6 +116,118 @@ public class PageElement {
         //this.switchToFrame();
         return driver.findElements(getLocator());
     }
+
+    public  void clickViaJavaScript(String elementName, By locator)
+    {
+            try
+            {
+                logger.debug(String.format("Clicking element '%s using Javascript'", elementName));
+                WebElement ele = getWebElement();
+                Point point = ele.getLocation();
+                ((JavascriptExecutor)driver).executeScript("window.scroll("+point.getX()+","+(point.getY()-100)+")");
+                ((JavascriptExecutor)driver).executeScript("arguments[0].click();", ele);
+            }
+            catch(AssertionError | Exception e)
+            {
+               e.getMessage();
+            }
+
+    }
+
+    public void clickViaJavaScript(String elementName, WebElement ele)
+    {
+            try
+            {
+                logger.debug(String.format("Clicking element '%s'", elementName));
+                Point point = ele.getLocation();
+                ((JavascriptExecutor)driver).executeScript("window.scroll("+point.getX()+","+(point.getY()-100)+")");
+                ((JavascriptExecutor)driver).executeScript("arguments[0].click();", ele);
+            }
+            catch(AssertionError | Exception e)
+            {
+               e.getMessage();
+            }
+    }
+
+    public void getTextDropDownSelectedItem(String elementName, String framePath, By locator, boolean waitUntilDisplayed, boolean waitUntilEnabled) throws Exception
+    {
+
+        String selectedOption = "";
+
+            try
+            {
+                String logMessage = String.format("Selected option of element '%s'", elementName);
+                WebElement webElement = getWebElement(framePath, locator, waitUntilDisplayed, waitUntilEnabled, Duration.ofSeconds(100));
+                selectedOption = new Select(webElement).getFirstSelectedOption().getText();
+
+            }
+            catch(TimeoutException e)
+            {
+                String errorMessage = String.format("Element '%s' is not displayed", elementName);
+            }
+            catch(AssertionError | Exception e)
+            {
+                String errorMessage = String.format("Element '%s' selected option vlaue is '%s'", elementName, selectedOption);
+            }
+
+
+    }
+
+    private WebElement getWebElement(String framePath, By locator, boolean waitUntilDisplayed, boolean waitUntilEnabled, Duration timeoutSeconds) throws Exception
+    {
+
+        if (waitUntilDisplayed &&
+                waitUntilEnabled)
+        {
+            waitForElementToBeDisplayedAndEnabled(locator, timeoutSeconds);
+        }
+        else if (waitUntilDisplayed)
+        {
+            waitForElementToBeDisplayed(locator, timeoutSeconds);
+        }
+        else
+        {
+            waitForElement(locator, timeoutSeconds);
+        }
+
+        return getElement(locator);
+    }
+
+    public void waitForElementToBeDisplayedAndEnabled(final By locator, Duration timeoutSeconds) {
+        WebDriverWait wait = new WebDriverWait(this.driver, timeoutSeconds);
+        /*
+         * wait.until(new Predicate<WebDriver>() {
+         *
+         * @Override public boolean apply(WebDriver driver) { return
+         * driver.findElement(locator).isDisplayed() &&
+         * driver.findElement(locator).isEnabled(); } });
+         */
+    }
+
+    public void waitForElementToBeDisplayed(final By locator, Duration timeoutSeconds) {
+        WebDriverWait wait = new WebDriverWait(this.driver, timeoutSeconds);
+        /*
+         * wait.until(new Predicate<WebDriver>() {
+         *
+         * @Override public boolean apply(WebDriver driver) { return
+         * driver.findElement(locator).isDisplayed(); } });
+         */
+    }
+
+    public void waitForElement(final By locator, Duration timeoutSeconds) {
+        WebDriverWait wait = new WebDriverWait(this.driver, timeoutSeconds);
+        /*
+         * wait.until(new Predicate<WebDriver>() {
+         *
+         * @Override public boolean apply(WebDriver driver) { return
+         * driver.findElement(locator) != null; } });
+         */
+    }
+
+    public  WebElement getElement(By locator) {
+        return this.driver.findElement(locator);
+    }
+
 
     private WebElement getWebElement() {
         //this.switchToFrame();
