@@ -190,11 +190,7 @@ public class MerchantOnBoardingSteps {
         // Write code here that turns the phrase above into concrete actions
         //throw new io.cucumber.java.PendingException();
     }
-    @Then("user enters {string}")
-    public void userEnters(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new io.cucumber.java.PendingException();
-    }
+
     @Then("User should see the Primary email")
     public void userShouldSeeThePrimaryEmail() {
         // Write code here that turns the phrase above into concrete actions
@@ -218,5 +214,10 @@ public class MerchantOnBoardingSteps {
         //homePage.ssoButton.click();
     }
 
+    @Then("User enters {string}")
+    public void userEnters(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        //throw new io.cucumber.java.PendingException();
+    }
 
 }

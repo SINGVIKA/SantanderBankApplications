@@ -41,7 +41,7 @@ Feature: Testing the Merchant On-boarding Journey
     And User should see ID
     And User should see Phone number type
     And User selects result from "Phone Prefix"
-    And user enters "Phone Number"
+    And User enters "Phone Number"
     And User should see the Primary email
     And User should see the Preferred method of contact
     When User selects "Add Primary Nationality"

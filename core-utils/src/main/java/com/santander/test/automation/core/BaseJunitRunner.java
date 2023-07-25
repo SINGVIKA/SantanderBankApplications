@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(glue = {"com.nilesh.lib.core"})
+@CucumberOptions(glue = {"com.vikas.lib.core"})
 public class BaseJunitRunner {
     private static final Logger logger = LoggerFactory.getLogger(BaseJunitRunner.class);
 
